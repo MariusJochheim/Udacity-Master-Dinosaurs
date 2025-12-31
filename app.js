@@ -1,5 +1,14 @@
 "use strict";
 
+// Create Human Object
+function Human(data) {
+    this.name = data.name || "Human";
+    this.weight = Number(data.weight) || 0;
+    this.height = (Number(data.feet) || 0) * 12 + (Number(data.inches) || 0);
+    this.diet = (data.diet || "").toLowerCase();
+    this.image = "images/human.png";
+}
+
 // Create Dino Constructor (using function/prototype pattern)
 function Dino(data) {
     this.species = data.species;
@@ -12,11 +21,7 @@ function Dino(data) {
     this.image = "images/" + this.species.toLowerCase().replace(/\s+/g, "-") + ".png";
 }
 
-
     // Create Dino Objects
-
-
-    // Create Human Object
 
     // Use IIFE to get human data from form
 
