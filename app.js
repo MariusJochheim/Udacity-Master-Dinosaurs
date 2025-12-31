@@ -1,6 +1,6 @@
 "use strict";
 
-// Create Human Object
+// Create Human Object from form input
 function Human(data) {
     this.name = data.name || "Human";
     this.weight = Number(data.weight) || 0;
@@ -11,7 +11,7 @@ function Human(data) {
 
 let human = null;
 
-// Create Dino Constructor (using function/prototype pattern)
+// Create Dino Constructor (using function/prototype pattern) for JSON data
 function Dino(data) {
     this.species = data.species;
     this.weight = Number(data.weight);
@@ -33,7 +33,7 @@ fetch("dino.json")
     });
 
 
-// Create Dino Compare Method 1
+// Compare weight between current dino and human input
 // NOTE: Weight in JSON file is in lbs, height in inches.
 Dino.prototype.compareWeight = function compareWeight(human) {
     if (!human || !human.weight) {
@@ -54,7 +54,7 @@ Dino.prototype.compareWeight = function compareWeight(human) {
 };
 
     
-// Create Dino Compare Method 2
+// Compare height between current dino and human input
 // NOTE: Weight in JSON file is in lbs, height in inches.
 Dino.prototype.compareHeight = function compareHeight(human) {
     if (!human || !human.height) {
@@ -75,7 +75,7 @@ Dino.prototype.compareHeight = function compareHeight(human) {
 };
 
     
-// Create Dino Compare Method 3
+// Compare diet between current dino and human input
 // NOTE: Weight in JSON file is in lbs, height in inches.
 Dino.prototype.compareDiet = function compareDiet(human) {
     if (!human || !human.diet) {
@@ -89,7 +89,7 @@ Dino.prototype.compareDiet = function compareDiet(human) {
     return this.species + " was a " + this.diet + ", while " + human.name + " is a " + human.diet + ".";
 };
 
-// Create Dino Random Fact
+// Return a random fact or comparison for current dino
 Dino.prototype.randomFact = function randomFact(human) {
     if (this.species === "Pigeon") {
         return this.fact;
@@ -111,6 +111,7 @@ Dino.prototype.randomFact = function randomFact(human) {
 };
 
 
+// Build and inject 3x3 grid tiles, placing human in the center
 function buildTiles(human) {
     const grid = document.getElementById("grid");
     if (!grid) {
@@ -152,6 +153,7 @@ function buildTiles(human) {
 
 // On button click, prepare and display infographic
 document.getElementById("btn").addEventListener("click", function handleCompare() {
+    // Capture human data from form fields and create Human instance
     human = (function createHumanFromForm() {
         const name = document.getElementById("name").value;
         const feet = document.getElementById("feet").value;
