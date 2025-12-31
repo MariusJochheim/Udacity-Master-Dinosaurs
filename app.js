@@ -89,6 +89,27 @@ Dino.prototype.compareDiet = function compareDiet(human) {
     return this.species + " was a " + this.diet + ", while " + human.name + " is a " + human.diet + ".";
 };
 
+// Create Dino Random Fact
+Dino.prototype.randomFact = function randomFact(human) {
+    if (this.species === "Pigeon") {
+        return this.fact;
+    }
+
+    const factOptions = [
+        this.fact,
+        this.compareWeight(human),
+        this.compareHeight(human),
+        this.compareDiet(human),
+        this.species + " lived in " + this.where + ".",
+        this.species + " lived during the " + this.when + ".",
+        this.species + " was a " + (this.diet || "mysterious eater") + "."
+    ].filter(Boolean);
+
+    const randomIndex = Math.floor(Math.random() * factOptions.length);
+
+    return factOptions[randomIndex];
+};
+
 
 // Generate Tiles for each Dino in Array
 
