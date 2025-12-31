@@ -2,7 +2,7 @@
 
 - [x] Implement `Dino` constructor + prototypes (`compareWeight`, `compareHeight`, `compareDiet`, `randomFact`).
 - [x] Implement `Human` constructor + form IIFE to capture input.
-- [ ] Fetch `dino.json`, map to `Dino` instances, ensure total objects = 9 (7 dinos + pigeon + human), shuffle list.
+- [x] Fetch `dino.json`, map to `Dino` instances, ensure total objects = 9 (7 dinos + pigeon + human).
 - [x] Insert human at index 4, build tiles (species/name, image, fact only for dinos), append to `#grid`.
 - [x] Hide `#dino-compare` form after generation.
 - [ ] Remove any `console.log` and ensure no errors occur on click.
