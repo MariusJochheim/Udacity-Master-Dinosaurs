@@ -33,23 +33,68 @@ fetch("dino.json")
     });
 
 
-    // Create Dino Compare Method 1
-    // NOTE: Weight in JSON file is in lbs, height in inches. 
+// Create Dino Compare Method 1
+// NOTE: Weight in JSON file is in lbs, height in inches.
+Dino.prototype.compareWeight = function compareWeight(human) {
+    if (!human || !human.weight) {
+        return this.species + " weighed around " + this.weight + " lbs.";
+    }
+
+    const weightDiff = this.weight - human.weight;
+
+    if (weightDiff > 0) {
+        return this.species + " weighs " + weightDiff + " lbs more than " + human.name + ".";
+    }
+
+    if (weightDiff < 0) {
+        return human.name + " weighs " + Math.abs(weightDiff) + " lbs more than " + this.species + ".";
+    }
+
+    return this.species + " and " + human.name + " weigh the same at " + this.weight + " lbs.";
+};
 
     
-    // Create Dino Compare Method 2
-    // NOTE: Weight in JSON file is in lbs, height in inches.
+// Create Dino Compare Method 2
+// NOTE: Weight in JSON file is in lbs, height in inches.
+Dino.prototype.compareHeight = function compareHeight(human) {
+    if (!human || !human.height) {
+        return this.species + " stood about " + this.height + " inches tall.";
+    }
+
+    const heightDiff = this.height - human.height;
+
+    if (heightDiff > 0) {
+        return this.species + " is " + heightDiff + " inches taller than " + human.name + ".";
+    }
+
+    if (heightDiff < 0) {
+        return human.name + " is " + Math.abs(heightDiff) + " inches taller than " + this.species + ".";
+    }
+
+    return this.species + " and " + human.name + " are the same height at " + this.height + " inches.";
+};
 
     
-    // Create Dino Compare Method 3
-    // NOTE: Weight in JSON file is in lbs, height in inches.
+// Create Dino Compare Method 3
+// NOTE: Weight in JSON file is in lbs, height in inches.
+Dino.prototype.compareDiet = function compareDiet(human) {
+    if (!human || !human.diet) {
+        return this.species + " was a " + this.diet + ".";
+    }
+
+    if (this.diet === human.diet) {
+        return this.species + " and " + human.name + " share the same diet: " + this.diet + ".";
+    }
+
+    return this.species + " was a " + this.diet + ", while " + human.name + " is a " + human.diet + ".";
+};
 
 
-    // Generate Tiles for each Dino in Array
-  
-        // Add tiles to DOM
+// Generate Tiles for each Dino in Array
 
-    // Remove form from screen
+    // Add tiles to DOM
+
+// Remove form from screen
 
 
 // On button click, prepare and display infographic
