@@ -111,9 +111,46 @@ Dino.prototype.randomFact = function randomFact(human) {
 };
 
 
-// Generate Tiles for each Dino in Array
+function buildTiles(human) {
+    const grid = document.getElementById("grid");
+    if (!grid) {
+        return;
+    }
 
-    // Add tiles to DOM
+    const tiles = dinoObjects.slice();
+    tiles.splice(4, 0, human);
+
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < tiles.length; i += 1) {
+        const tileData = tiles[i];
+        const tile = document.createElement("div");
+        tile.className = "grid-item";
+
+        const title = document.createElement("h3");
+        title.textContent = tileData.species || tileData.name;
+
+        const image = document.createElement("img");
+        image.src = tileData.image;
+        image.alt = tileData.species || tileData.name;
+
+        tile.appendChild(title);
+        tile.appendChild(image);
+
+        if (tileData.species) {
+            const fact = document.createElement("p");
+            fact.textContent = tileData.randomFact(human);
+            tile.appendChild(fact);
+        }
+
+        fragment.appendChild(tile);
+    }
+
+    grid.innerHTML = "";
+    grid.appendChild(fragment);
+}
+
+    // TODO Add tiles to DOM
 
 // Remove form from screen
 
@@ -135,5 +172,13 @@ document.getElementById("btn").addEventListener("click", function handleCompare(
             diet: diet
         });
     })();
-    console.log(human);
+
+    // Add tiles to DOM
+    buildTiles(human);
+
+    // Remove form from screen
+    const form = document.getElementById("dino-compare");
+    if (form) {
+        form.style.display = "none";
+    }
 });
