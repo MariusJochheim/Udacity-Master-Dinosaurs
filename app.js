@@ -150,11 +150,6 @@ function buildTiles(human) {
     grid.appendChild(fragment);
 }
 
-    // TODO Add tiles to DOM
-
-// Remove form from screen
-
-
 // On button click, prepare and display infographic
 document.getElementById("btn").addEventListener("click", function handleCompare() {
     human = (function createHumanFromForm() {
