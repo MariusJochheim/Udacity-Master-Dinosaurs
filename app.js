@@ -9,6 +9,8 @@ function Human(data) {
     this.image = "images/human.png";
 }
 
+// Use IIFE to get human data from form
+
 // Create Dino Constructor (using function/prototype pattern)
 function Dino(data) {
     this.species = data.species;
@@ -21,9 +23,14 @@ function Dino(data) {
     this.image = "images/" + this.species.toLowerCase().replace(/\s+/g, "-") + ".png";
 }
 
-    // Create Dino Objects
+// Create Dino Objects
+let dinoObjects = [];
 
-    // Use IIFE to get human data from form
+fetch("dino.json")
+    .then((response) => response.json())
+    .then((data) => {
+        dinoObjects = data.Dinos.map((dino) => new Dino(dino));
+    });
 
 
     // Create Dino Compare Method 1
