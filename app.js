@@ -1,5 +1,16 @@
+"use strict";
 
-    // Create Dino Constructor
+// Create Dino Constructor (using function/prototype pattern)
+function Dino(data) {
+    this.species = data.species;
+    this.weight = Number(data.weight);
+    this.height = Number(data.height);
+    this.diet = (data.diet || "").toLowerCase();
+    this.where = data.where;
+    this.when = data.when;
+    this.fact = data.fact;
+    this.image = "images/" + this.species.toLowerCase().replace(/\s+/g, "-") + ".png";
+}
 
 
     // Create Dino Objects
