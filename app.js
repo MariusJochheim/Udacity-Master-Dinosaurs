@@ -20,7 +20,7 @@ function Dino(data) {
     this.where = data.where;
     this.when = data.when;
     this.fact = data.fact;
-    this.image = "images/" + this.species.toLowerCase().replace(/\s+/g, "-") + ".png";
+    this.image = "images/" + this.species.toLowerCase() + ".png";
 }
 
 // Create Dino Objects
