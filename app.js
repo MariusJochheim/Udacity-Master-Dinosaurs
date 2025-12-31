@@ -9,7 +9,7 @@ function Human(data) {
     this.image = "images/human.png";
 }
 
-// Use IIFE to get human data from form
+let human = null;
 
 // Create Dino Constructor (using function/prototype pattern)
 function Dino(data) {
@@ -119,3 +119,21 @@ Dino.prototype.randomFact = function randomFact(human) {
 
 
 // On button click, prepare and display infographic
+document.getElementById("btn").addEventListener("click", function handleCompare() {
+    human = (function createHumanFromForm() {
+        const name = document.getElementById("name").value;
+        const feet = document.getElementById("feet").value;
+        const inches = document.getElementById("inches").value;
+        const weight = document.getElementById("weight").value;
+        const diet = document.getElementById("diet").value;
+
+        return new Human({
+            name: name,
+            feet: feet,
+            inches: inches,
+            weight: weight,
+            diet: diet
+        });
+    })();
+    console.log(human);
+});
