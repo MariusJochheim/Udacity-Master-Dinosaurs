@@ -153,22 +153,29 @@ function buildTiles(human) {
 
 // On button click, prepare and display infographic
 document.getElementById("btn").addEventListener("click", function handleCompare() {
-    // Capture human data from form fields and create Human instance
-    human = (function createHumanFromForm() {
-        const name = document.getElementById("name").value;
-        const feet = document.getElementById("feet").value;
-        const inches = document.getElementById("inches").value;
-        const weight = document.getElementById("weight").value;
+    // Capture human data from form fields and validate before creating Human instance
+    const formValues = (function readHumanForm() {
+        const name = document.getElementById("name").value.trim();
+        const feet = document.getElementById("feet").value.trim();
+        const inches = document.getElementById("inches").value.trim();
+        const weight = document.getElementById("weight").value.trim();
         const diet = document.getElementById("diet").value;
 
-        return new Human({
+        return {
             name: name,
             feet: feet,
             inches: inches,
             weight: weight,
             diet: diet
-        });
+        };
     })();
+
+    if (!formValues.name || formValues.feet === "" || formValues.inches === "" || formValues.weight === "") {
+        alert("Please fill in your name, height (feet and inches), and weight before continuing.");
+        return;
+    }
+
+    human = new Human(formValues);
 
     // Add tiles to DOM
     buildTiles(human);
